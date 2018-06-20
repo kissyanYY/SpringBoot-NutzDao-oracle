@@ -12,7 +12,7 @@ public class Person { // 不会强制要求继承某个类
     private int id; // @Id与属性名称id没有对应关系.
 
     @Name    // 表示该字段可以用来标识此对象，或者是字符型主键，或者是唯一性约束
-    private String name;
+    private String name; 
 
     @Column      // 表示该对象属性可以映射到数据库里作为一个字段
     private int age;
