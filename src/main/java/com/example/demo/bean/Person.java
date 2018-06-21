@@ -16,7 +16,17 @@ public class Person { // 不会强制要求继承某个类
 
     @Column      // 表示该对象属性可以映射到数据库里作为一个字段
     private int age;
-
+    
+    public Person()  {
+        super();
+    }
+    
+    public Person(String name,Integer gae) {
+        super();
+        this.name=name;
+        this.age=gae;
+    }
+    
 	public int getId() {
 		return id;
 	}

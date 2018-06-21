@@ -26,14 +26,18 @@
 
 	<dependencies>
 	
+	<!-- Thymeleaf 模板 -->
+	    <dependency> 
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+	
+<!--ojdbc oracle.jar包 不支持在线加载，必须使用本地加载方法   -->
 		<dependency>
 		    <groupId>com.oracle</groupId>
 		    <artifactId>ojdbc6</artifactId>
 		    <version>11.2.0.3</version>
 		</dependency>
-
-
-<!--ojdbc oracle.jar包 不支持在线加载，必须使用本地加载方法   -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
@@ -43,6 +47,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
+	<!-- Nutz 插件 -->
 	<dependency>
     <groupId>org.nutz</groupId>
     <artifactId>nutz-plugins-spring-boot-starter</artifactId>
@@ -56,9 +61,6 @@
         <optional>true</optional>
     </dependency>
 		
-<!-- 		<dependency> -->
-<!-- 			<groupId></groupId> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
