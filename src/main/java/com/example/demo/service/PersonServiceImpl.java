@@ -13,13 +13,6 @@ public class PersonServiceImpl implements PersonServiceInterface {
     private Dao dao;
 	
 	@Override
-	public List getPersons() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
 	public Person getPersonByPropertis(String pro) {
 		// TODO Auto-generated method stub
 		Person p = dao.fetch(Person.class,pro);
@@ -28,9 +21,16 @@ public class PersonServiceImpl implements PersonServiceInterface {
 
 
 	@Override
-	public void insertObj(Person p) {
+	public void insertObj(Object p) {
 		// TODO Auto-generated method stub
 		dao.insert(p);
+	}
+
+
+	@Override
+	public void createTable(Class<?> table) {
+		// TODO Auto-generated method stub
+		dao.create(table,false);
 	}
 
 }

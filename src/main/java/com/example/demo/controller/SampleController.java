@@ -3,15 +3,20 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.bean.Person;
+import com.example.demo.bean.User;
 import com.example.demo.service.PersonServiceInterface;
 
 @Controller  
@@ -23,12 +28,21 @@ public class SampleController {
 	
 	@RequestMapping("/insert")  
     @ResponseBody  
-    public String home() {  
-        Person p = new Person();
-        p.setAge(10);
-        p.setName("GG");
+    public String home(String name) {  
+        User p = new User();
+        p.setUsername(name);
+        p.setPassword("123456");
         service.insertObj(p);
         return "Hello World!";  
+    }  
+	
+	@RequestMapping("/create")  
+    @ResponseBody  
+    public String create(String tablename) {  
+		if(tablename.equals("User")){
+			service.createTable(User.class);
+		}
+        return "tableCreate";  
     }  
 	
 	@RequestMapping("/getP")  
@@ -59,6 +73,29 @@ public class SampleController {
         model.addAttribute("people",people);
         return "index";
     }
-
+    
+    @RequestMapping(value = "/init")
+    public String init(Model  model)
+    {
+    	System.out.println("init");
+        return "login";
+    }
+    
+    @RequestMapping(value = "/login")
+    @ResponseBody
+    public  User login(@Valid User user,BindingResult result, Model  model)
+    {
+    	   if (result.hasErrors()) {
+               List<ObjectError> error = result.getAllErrors();
+               for (ObjectError e : error) {
+                   System.out.println(e);
+               }
+               return null;
+           }
+    	   System.out.println("TO LOGIN"+user.getUsername());
+    	   
+    	   	
+           return user;
+    }
     
 }

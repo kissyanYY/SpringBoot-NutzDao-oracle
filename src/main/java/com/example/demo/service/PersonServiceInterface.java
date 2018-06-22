@@ -6,9 +6,9 @@ import com.example.demo.bean.Person;
 
 public interface PersonServiceInterface {
 
-	public List getPersons();
+	public void createTable(Class<?> tab); 
 	
-	public void insertObj(Person p);
+	public void insertObj(Object p);
 	
 	public Person getPersonByPropertis(String pro);
 }
